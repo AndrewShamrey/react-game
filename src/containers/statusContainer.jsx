@@ -2,7 +2,7 @@ import { useEffect, useCallback } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { GAME } from "../constants";
 import { showSettings, restartGame, updateElapsedTime } from "../actions/control";
-import { Status } from "../components/status/status";
+import Status from "../components/status/status";
 
 const StatusContainer = () => {
   const dispatch = useDispatch();

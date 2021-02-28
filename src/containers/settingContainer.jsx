@@ -2,7 +2,7 @@ import { useState, useEffect, useCallback } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { MIN_WIDTH, MIN_HEIGHT, MIN_MINES } from "../constants";
 import { hideSettings, setGame, restartGame } from "../actions/control";
-import { Settings } from "../components/settings/settings";
+import Settings from "../components/settings/settings";
 
 const SettingsContainer = () => {
   const dispatch = useDispatch();

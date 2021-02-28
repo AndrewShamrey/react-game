@@ -1,3 +1,5 @@
+import "./status.css";
+
 const Status = ({ leftMineCount, mineCount, resultEmoji, enableSettings, elapsedTime, onClickRestart, onClickSettings }) => {
   return (
     <div className="status-wrapper">

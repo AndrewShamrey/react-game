@@ -1,6 +1,6 @@
 import { useCallback } from "react";
 import { useSelector } from "react-redux";
-import { Board } from "../components/board/board";
+import Board from "../components/board/board";
 
 const BoardContainer = () => {
   const enableSettings = useSelector((rootState) => rootState.control.enableSettings);

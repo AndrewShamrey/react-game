@@ -1,7 +1,7 @@
 import "./App.css";
-import { BoardContainer } from './containers/boardContainer';
-import { StatusContainer } from './containers/statusContainer';
-import { SettingsContainer } from './containers/settingContainer';
+import BoardContainer from './containers/boardContainer';
+import StatusContainer from './containers/statusContainer';
+import SettingsContainer from './containers/settingContainer';
 
 function App() {
   return (
