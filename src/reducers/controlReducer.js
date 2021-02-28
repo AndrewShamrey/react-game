@@ -3,6 +3,12 @@ import * as ACTION_TYPES from "../actionTypes/control";
 import { MIN_WIDTH, MIN_HEIGHT, MIN_MINES, GAME, CODES } from "../constants";
 import { initBoard, expandOpenedCell, getNextCellCode, getFlagIncDec } from "../minesweeper";
 
+// import useSound from 'use-sound';
+import bomb from "../assets/audio/bomb.wav";
+const bombAudio = new Audio(bomb);
+// const [bombAudio] = useSound(boopSfx);
+
+
 const buildState = () => ({
   enableSettings: false,
   gameState: GAME.READY,
@@ -51,13 +57,14 @@ const controlReducer = (state = initialState, action) => {
       return produce(state, (draft) => {
         const code = state.boardData[action.y][action.x];
         draft.gameState = GAME.RUN;
-
-        // Start timer if click on cell
         if (!state.enableTimer) {
           draft.enableTimer = true;
         }
 
         if (code === CODES.MINE) {
+          bombAudio.play();
+
+          
           draft.gameState = GAME.LOSE;
           draft.enableTimer = false;
         } else if (code === CODES.NOTHING) {

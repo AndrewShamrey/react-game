@@ -17,13 +17,14 @@
   justify-content: center;
   align-items: center;
   min-height: 100vh;
+  background-image: url("./assets/images/webb.png");
 }
 
 .App {
   display: inline-block;
   padding: 30px;
   border-radius: 5px;
-  background-color: #3498db;
+  background-color: #0890eb;
   color: white;
 }
 

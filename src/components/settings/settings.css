@@ -33,18 +33,23 @@
 }
 
 .settings-button {
-  background-color: #206592;
-  border: none;
-  border-radius: 5px;
-  color: white;
-  cursor: pointer;
-  font-size: 14px;
-  outline: none;
-  padding: 10px;
-  transition-duration: 0.2s;
   width: 100%;
+  padding: 10px;
+  border-radius: 5px;
+  border: none;
+  outline: none;
+  font-size: 14px;
+  color: white;
+  background-color: #206592;
+  outline: none;
+  cursor: pointer;
+  transition: all 0.2s ease;
 }
 
 .settings-button:hover {
   background-color: #1c567d;
+}
+
+.settings-button:active {
+  transform: translateY(-1px);
 }

@@ -54,7 +54,6 @@ const StatusContainer = () => {
           leftMineCount={mineCount - flagCount}
           mineCount={mineCount}
           resultEmoji={getResultEmoji(gameState)}
-          enableSettings={gameState !== GAME.RUN}
           elapsedTime={elapsedTime.toString().padStart(3, "0")}
           onClickRestart={onClickRestart}
           onClickSettings={onClickSettings}
