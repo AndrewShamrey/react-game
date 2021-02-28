@@ -1,6 +1,5 @@
 :root {
   font-family: "Montserrat", sans-serif;
-  font-size: 16px;
 }
 
 * {
@@ -13,14 +12,22 @@
   display: none;
 }
 
+#root {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+}
+
 .App {
-  background-color: #3498db;
-  border-radius: 5px;
-  color: white;
   display: inline-block;
   padding: 30px;
+  border-radius: 5px;
+  background-color: #3498db;
+  color: white;
 }
 
 .game__title {
   text-align: center;
+  user-select: none;
 }

@@ -2,7 +2,7 @@ import { memo, useCallback } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { GAME, CODES } from "../constants";
 import { openCell, rotateCellState } from "../actions/control";
-import { Cell } from "../components/cell/cell";
+import Cell from "../components/cell/cell";
 
 const CellContainer = ({ x, y }) => {
   const dispatch = useDispatch();

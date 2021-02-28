@@ -23,6 +23,15 @@
   -webkit-appearance: none;
 }
 
+.settings-input::-webkit-slider-thumb {
+  background-color: dimgray;
+	border: none;
+	border-radius: 0;
+	width: 20px;
+	height: 20px;
+  -webkit-appearance: none;
+}
+
 .settings-button {
   background-color: #206592;
   border: none;

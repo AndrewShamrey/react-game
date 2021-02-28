@@ -1,4 +1,4 @@
-import { CellContainer } from "../../containers/cellContainer";
+import CellContainer from "../../containers/cellContainer";
 import { Wrapper } from "./boardStyles";
 
 const Board = ({ width, height, onRightClickBoard }) => {

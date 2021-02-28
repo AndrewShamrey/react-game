@@ -1,7 +1,8 @@
 .status-wrapper {
   display: flex;
   font-size: 18px;
-  margin-top: 20px;
+  margin: 20px 0 10px;
+  user-select: none;
 }
 
 .status-mines {
