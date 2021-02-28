@@ -1,0 +1,26 @@
+:root {
+  font-family: "Montserrat", sans-serif;
+  font-size: 16px;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+::-webkit-scrollbar {
+  display: none;
+}
+
+.App {
+  background-color: #3498db;
+  border-radius: 5px;
+  color: white;
+  display: inline-block;
+  padding: 30px;
+}
+
+.game__title {
+  text-align: center;
+}

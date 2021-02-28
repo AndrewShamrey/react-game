@@ -1,0 +1,7 @@
+export const SHOW_SETTINGS = 'SHOW_SETTINGS';
+export const HIDE_SETTINGS = 'HIDE_SETTINGS';
+export const SET_GAME = 'SET_GAME';
+export const RESTART_GAME = 'RESTART_GAME';
+export const UPDATE_ELAPSED_TIME = 'UPDATE_ELAPSED_TIME';
+export const OPEN_CELL = 'OPEN_CELL';
+export const ROTATE_CELL_STATE = 'ROTATE_CELL_STATE';
