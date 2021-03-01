@@ -59,7 +59,6 @@ export const getFlagIncDec = (code) => {
 export const expandOpenedCell = (boardData, x, y) => {
   let openedCellCount = 0;
 
-  // Define function to get mine count
   const getMineCount = (x, y) => {
     let aroundCode = [];
     let mineCount = 0;
@@ -69,13 +68,12 @@ export const expandOpenedCell = (boardData, x, y) => {
     aroundCode = boardData[y + 1] ? aroundCode.concat(boardData[y + 1][x - 1], boardData[y + 1][x], boardData[y + 1][x + 1]) : aroundCode;
 
     mineCount = aroundCode.filter((item) => {
-		return [CODES.MINE, CODES.MINE_FLAG, CODES.MINE_QUESTION].includes(item);
-	}).length;
+		  return [CODES.MINE, CODES.MINE_FLAG, CODES.MINE_QUESTION].includes(item);
+	  }).length;
 
     return mineCount;
   };
 
-  // Using DFS algorithm to expand
   const dfsSearch = (x, y) => {
     if (boardData[y][x] !== CODES.NOTHING) {
       return;

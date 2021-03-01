@@ -4,10 +4,12 @@
 }
 
 .settings-wrapper__item {
+  position: relative;
   margin-bottom: 20px;
 }
 
-.settings-wrapper__item-mines {
+.settings-wrapper__item-music {
+  position: relative;
   margin-bottom: 30px;
 }
 

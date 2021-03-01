@@ -2,7 +2,7 @@ import { SHOW_SETTINGS, HIDE_SETTINGS, SET_GAME, RESTART_GAME, UPDATE_ELAPSED_TI
 
 export const showSettings = () => ({ type: SHOW_SETTINGS });
 export const hideSettings = () => ({ type: HIDE_SETTINGS });
-export const setGame = (width, height, mineCount) => ({ type: SET_GAME, width, height, mineCount });
+export const setGame = (width, height, mineCount, soundsVolume, musicVolume) => ({ type: SET_GAME, width, height, mineCount, soundsVolume, musicVolume });
 export const restartGame = () => ({ type: RESTART_GAME });
 export const updateElapsedTime = () => ({ type: UPDATE_ELAPSED_TIME });
 export const openCell = (x, y) => ({ type: OPEN_CELL, x, y });
