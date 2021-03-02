@@ -1,8 +1,7 @@
-import React from "react";
-import { MIN_WIDTH, MAX_WIDTH, MIN_HEIGHT, MAX_HEIGHT, MIN_MINES, MIN_VOLUME, MAX_VOLUME } from "../../constants";
+import { MIN_WIDTH, MAX_WIDTH, MIN_HEIGHT, MAX_HEIGHT, MIN_MINES, MIN_VOLUME, MAX_VOLUME } from "../../utils/constants";
 import "./settings.css";
 
-const Settings = ({ width, height, mineCount, maxMineCount, soundsVolume, musicVolume, onChangeWidth, onChangeHeight, onChangeMines, onChangeSoundsVolume, onChangeMusicVolume, onClickSet }) => {
+const Settings = ({ width, height, mineCount, maxMineCount, soundsVolume, musicVolume, onChangeWidth, onChangeHeight, onChangeMines, onChangeSoundsVolume, onChangeMusicVolume, onClickRecords, onClickSet }) => {
   return (
     <div className="settings-wrapper">
       <div className="settings-wrapper__item">
@@ -25,6 +24,7 @@ const Settings = ({ width, height, mineCount, maxMineCount, soundsVolume, musicV
         <p className="settings-item__title">Music: {musicVolume}</p>
         <input className="settings-input" type="range" min={MIN_VOLUME} max={MAX_VOLUME} value={musicVolume} onChange={onChangeMusicVolume} />
       </div>
+      <button className="settings-button settings-button-records" onClick={onClickRecords}>Show records</button>
       <button className="settings-button" onClick={onClickSet}>Set</button>
     </div>
   );

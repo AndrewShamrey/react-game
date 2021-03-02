@@ -1,12 +1,15 @@
 import { useEffect, useCallback } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { GAME } from "../constants";
+import { useHotkeys } from 'react-hotkeys-hook';
+import { GAME } from "../utils/constants";
 import { showSettings, restartGame, updateElapsedTime } from "../actions/control";
 import Status from "../components/status/status";
 
 const StatusContainer = () => {
   const dispatch = useDispatch();
+  const enableAuth = useSelector((rootState) => rootState.control.enableAuth);
   const enableSettings = useSelector((rootState) => rootState.control.enableSettings);
+  const enableRecords = useSelector((rootState) => rootState.control.enableRecords);
   const gameState = useSelector((rootState) => rootState.control.gameState);
   const enableTimer = useSelector((rootState) => rootState.control.enableTimer);
   const elapsedTime = useSelector((rootState) => rootState.control.elapsedTime);
@@ -47,9 +50,13 @@ const StatusContainer = () => {
     dispatch(showSettings());
   }, []);
 
+  // useHotkeys('Escape', () => {
+  //   onClickSettings();
+  // });
+
   return (
     <>
-      {!enableSettings && (
+      {!enableSettings && !enableAuth && !enableRecords && (
         <Status
           leftMineCount={mineCount - flagCount}
           mineCount={mineCount}

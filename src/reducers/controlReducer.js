@@ -1,7 +1,8 @@
 import produce from "immer";
 import * as ACTION_TYPES from "../actionTypes/control";
-import { MIN_WIDTH, MIN_HEIGHT, MIN_MINES, GAME, CODES, MAX_VOLUME } from "../constants";
-import { initBoard, expandOpenedCell, getNextCellCode, getFlagIncDec } from "../minesweeper";
+import { MIN_WIDTH, MIN_HEIGHT, MIN_MINES, GAME, CODES, MAX_VOLUME } from "../utils/constants";
+import { initBoard, expandOpenedCell, getNextCellCode, getFlagIncDec } from "../utils/minesweeper";
+import fetchData from "../utils/fetchData";
 
 import bomb from "../assets/audio/bomb.wav";
 import flag from "../assets/audio/flag.wav";
@@ -19,7 +20,11 @@ const relaxAudio = new Audio(relax);
 relaxAudio.loop="loop";
 
 const buildState = () => ({
+  enableAuth: true,
+  gamerName: "",
+  enableRecords: false,
   enableSettings: false,
+  needToUpdateRecords: false,
   gameState: GAME.READY,
   enableTimer: false,
   elapsedTime: 0,
@@ -37,6 +42,29 @@ const initialState = { ...buildState() };
 
 const controlReducer = (state = initialState, action) => {
   switch (action.type) {
+    case ACTION_TYPES.HIDE_AUTH:
+      return produce(state, (draft) => {
+        draft.enableAuth = false;
+        draft.needToUpdateRecords = true;
+      });
+    case ACTION_TYPES.SET_NAME:
+      return produce(state, (draft) => {
+        draft.gamerName = action.name;
+      });
+    case ACTION_TYPES.SHOW_RECORDS:
+      return produce(state, (draft) => {
+        draft.enableRecords = true;
+        draft.enableSettings = false;
+      });
+    case ACTION_TYPES.HIDE_RECORDS:
+      return produce(state, (draft) => {
+        draft.enableRecords = false;
+        draft.enableSettings = true;
+      });
+    case ACTION_TYPES.UPDATE_RECORDS:
+      return produce(state, (draft) => {
+        draft.needToUpdateRecords = false;
+      });
     case ACTION_TYPES.SHOW_SETTINGS:
       return produce(state, (draft) => {
         const systemAudio = new Audio(system);
@@ -113,8 +141,12 @@ const controlReducer = (state = initialState, action) => {
             const winAudio = new Audio(success);
             winAudio.volume = state.soundsVolume / 100;
             winAudio.play();
+            const newGamer = { name: state.gamerName, time: state.elapsedTime, bombs: state.mineCount }
+            fetchData("POST", null, JSON.stringify(newGamer))
+              .catch((e) => console.log(e));
             draft.gameState = GAME.WIN;
             draft.enableTimer = false;
+            draft.needToUpdateRecords = true
           }
         }
       });

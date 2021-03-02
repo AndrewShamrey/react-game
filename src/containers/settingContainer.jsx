@@ -1,7 +1,8 @@
 import { useState, useEffect, useCallback } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { MIN_WIDTH, MIN_HEIGHT, MIN_MINES, MAX_VOLUME } from "../constants";
-import { hideSettings, setGame, restartGame } from "../actions/control";
+import { useHotkeys } from 'react-hotkeys-hook';
+import { MIN_WIDTH, MIN_HEIGHT, MIN_MINES, MAX_VOLUME } from "../utils/constants";
+import { hideSettings, setGame, restartGame, showRecords } from "../actions/control";
 import Settings from "../components/settings/settings";
 
 const SettingsContainer = () => {
@@ -41,11 +42,19 @@ const SettingsContainer = () => {
     setMusicVolume(parseInt(e.target.value));
   }, []);
 
+  const onClickRecords = useCallback(() => {
+    dispatch(showRecords());
+  }, []);
+
   const onClickSet = useCallback(() => {
     dispatch(setGame(width, height, mineCount, soundsVolume, musicVolume));
     dispatch(restartGame());
     dispatch(hideSettings());
   }, [width, height, mineCount, soundsVolume, musicVolume]);
+
+  // useHotkeys('Enter', () => {
+  //   onClickSet();
+  // });
 
   return (
     <>
@@ -62,6 +71,7 @@ const SettingsContainer = () => {
           onChangeMines={onChangeMines}
           onChangeSoundsVolume={onChangeSoundsVolume}
           onChangeMusicVolume={onChangeMusicVolume}
+          onClickRecords={onClickRecords}
           onClickSet={onClickSet}
         />
       )}

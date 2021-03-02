@@ -4,12 +4,10 @@
 }
 
 .settings-wrapper__item {
-  position: relative;
   margin-bottom: 20px;
 }
 
 .settings-wrapper__item-music {
-  position: relative;
   margin-bottom: 30px;
 }
 
@@ -32,6 +30,10 @@
 	width: 20px;
 	height: 20px;
   -webkit-appearance: none;
+}
+
+.settings-button-records {
+  margin-bottom: 10px;
 }
 
 .settings-button {
