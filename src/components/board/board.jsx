@@ -1,9 +1,9 @@
 import CellContainer from "../../containers/cellContainer";
 import { Wrapper } from "./boardStyles";
 
-const Board = ({ width, height, onRightClickBoard }) => {
+const Board = ({ cellSize, cellMargin, width, height, onRightClickBoard }) => {
   return (
-    <Wrapper widthSize={width} onContextMenu={onRightClickBoard}>
+    <Wrapper cellSize={cellSize} cellMargin={cellMargin} widthSize={width} onContextMenu={onRightClickBoard}>
       {Array(width * height).fill().map((item, index) => (
           <CellContainer key={index} x={index % width} y={Math.floor(index / width)} />
         ))}

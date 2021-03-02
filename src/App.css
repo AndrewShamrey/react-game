@@ -31,6 +31,7 @@
 }
 
 .game__title {
+  font-size: 28px;
   text-align: center;
   user-select: none;
 }

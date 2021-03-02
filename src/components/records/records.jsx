@@ -7,18 +7,21 @@ const Records = ({ records, onClickClose }) => {
       <img className="records-btn-close" src={Close} alt="close" title="Close records" onClick={onClickClose} />
       <h2 className="records-title">Your records</h2>
       <div className="table-container">
-        <table className="records-table">
-          <thead>
-            <tr><th>№</th><th>Name</th><th>Date</th><th>Bombs</th><th>Time</th></tr>  
-          </thead>
-          <tbody>
-            {records.sort((a, b) => a.time - b.time).filter((item, index) => index < 10).map((item, index) => {
-              const sourceDate = new Date(item.date);
-              const date = sourceDate.toLocaleString();
-              return <tr key={index}><td>{index + 1}</td><td>{item.name}</td><td>{date}</td><td>{item.bombs}</td><td>{item.time}</td></tr>;
-            })}
-          </tbody>
-        </table>
+        {!records.length && <p className="records-warning">You have no records yet</p>}
+        {!!records.length && 
+          <table className="records-table">
+            <thead>
+              <tr><th>№</th><th>Name</th><th>Date</th><th>Bombs</th><th>Time</th></tr>  
+            </thead>
+            <tbody>
+              {records.sort((a, b) => a.time - b.time).filter((item, index) => index < 10).map((item, index) => {
+                const sourceDate = new Date(item.date);
+                const date = sourceDate.toLocaleString();
+                return <tr key={index}><td>{index + 1}</td><td>{item.name}</td><td>{date}</td><td>{item.bombs}</td><td>{item.time}</td></tr>;
+              })}
+            </tbody>
+          </table>
+        }
       </div>
     </div>
   );

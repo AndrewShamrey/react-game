@@ -40,6 +40,11 @@
   width: 0;
 }
 
+.records-warning {
+  font-size: 24px;
+  text-align: center;
+}
+
 .records-table {
   position: relative;
   width: 100%;

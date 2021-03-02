@@ -18,7 +18,7 @@ export const Button = styled.button`
     }
   }};
   border: none;
-  border-radius: 5px;
+  border-radius: 4px;
   box-sizing: border-box;
   color: ${({ cellCode }) => {
     switch (cellCode) {
@@ -43,10 +43,10 @@ export const Button = styled.button`
     }
   }};
   display: block;
+  width: ${({ cellSize }) => cellSize}px;
+  height: ${({ cellSize }) => cellSize}px;
+  margin: ${({ cellMargin }) => cellMargin}px;
   font-size: ${({ cellCode }) => (cellCode > 0 ? 20 : 18)}px;
   font-weight: bold;
-  margin: ${CELL_MARGIN}px;
   outline: none;
-  width: ${CELL_SIZE}px;
-  height: ${CELL_SIZE}px;
 `;

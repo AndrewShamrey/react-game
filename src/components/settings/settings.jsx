@@ -1,5 +1,6 @@
 import { MIN_WIDTH, MAX_WIDTH, MIN_HEIGHT, MAX_HEIGHT, MIN_MINES, MIN_VOLUME, MAX_VOLUME } from "../../utils/constants";
 import "./settings.css";
+import Logo from "../../assets/images/rs_school_js.svg";
 
 const Settings = ({ width, height, mineCount, maxMineCount, soundsVolume, musicVolume, onChangeWidth, onChangeHeight, onChangeMines, onChangeSoundsVolume, onChangeMusicVolume, onClickRecords, onClickSet }) => {
   return (
@@ -26,6 +27,14 @@ const Settings = ({ width, height, mineCount, maxMineCount, soundsVolume, musicV
       </div>
       <button className="settings-button settings-button-records" onClick={onClickRecords}>Show records</button>
       <button className="settings-button" onClick={onClickSet}>Set</button>
+      <footer>
+        <div className="footer-text">
+          <a className="footer-logo-link" href="https://rs.school/js/">
+            <img src={Logo} alt="rs_logo"></img>
+          </a>
+          <a className="author-git" href="https://github.com/AndrewShamrey">©AndrewShamrey, 2021</a>
+        </div>
+      </footer>
     </div>
   );
 };
