@@ -1,6 +1,6 @@
 import { useState, useCallback } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { hideAuth, setName, restartGame } from "../actions/control";
+import { hideAuth, setName } from "../actions/control";
 import Auth from "../components/auth/auth";
 
 const AuthContainer = () => {

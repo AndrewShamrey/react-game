@@ -27,9 +27,9 @@ const Settings = ({ width, height, mineCount, maxMineCount, soundsVolume, musicV
         <p className="settings-item__title">Music: {musicVolume}</p>
         <input className="settings-input" type="range" min={MIN_VOLUME} max={MAX_VOLUME} value={musicVolume} onChange={onChangeMusicVolume} />
       </div>
-      <button className="settings-button settings-button-back" onClick={onClickSetBack}>Select background</button>
-      <button className="settings-button settings-button-records" onClick={onClickRecords}>Show records</button>
-      <button className="settings-button" onClick={onClickSet}>Set</button>
+      <button className="settings-button" onClick={onClickSetBack}>Select background</button>
+      <button className="settings-button" onClick={onClickRecords}>Show records</button>
+      <button className="settings-button settings-button-set" onClick={onClickSet}>Set</button>
       <footer>
         <div className="footer-text">
           <a className="footer-logo-link" href="https://rs.school/js/">

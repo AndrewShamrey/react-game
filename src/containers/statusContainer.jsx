@@ -1,6 +1,5 @@
 import { useEffect, useCallback } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { useHotkeys } from 'react-hotkeys-hook';
 import { GAME } from "../utils/constants";
 import { showSettings, restartGame, updateElapsedTime } from "../actions/control";
 import Status from "../components/status/status";
@@ -47,10 +46,6 @@ const StatusContainer = () => {
   const onClickSettings = useCallback(() => {
     dispatch(showSettings());
   }, []);
-
-  // useHotkeys('Escape', () => {
-  //   onClickSettings();
-  // });
 
   return (
     <>

@@ -1,7 +1,7 @@
 .status-wrapper {
   display: flex;
-  font-size: 18px;
   margin: 20px 0 10px;
+  font-size: 18px;
   user-select: none;
 }
 

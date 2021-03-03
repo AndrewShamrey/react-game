@@ -49,4 +49,5 @@ export const Button = styled.button`
   font-size: ${({ cellCode }) => (cellCode > 0 ? 20 : 18)}px;
   font-weight: bold;
   outline: none;
+  user-select: none;
 `;

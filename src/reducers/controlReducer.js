@@ -20,8 +20,8 @@ const relaxAudio = new Audio(relax);
 relaxAudio.loop="loop";
 
 const buildState = () => ({
-  enableAuth: true,
   gamerName: "",
+  enableAuth: true,
   enableRecords: false,
   enableSettings: false,
   enableBackSetting: false,
@@ -146,11 +146,11 @@ const controlReducer = (state = initialState, action) => {
         const code = state.boardData[action.y][action.x];
         draft.gameState = GAME.RUN;
         if (!state.enableTimer) {
-          if (relaxAudio.paused) {
-            relaxAudio.volume = state.musicVolume / 100;
-            relaxAudio.play();
-          }
           draft.enableTimer = true;
+        }
+        if (relaxAudio.paused) {
+          relaxAudio.volume = state.musicVolume / 100;
+          relaxAudio.play();
         }
         let audio;
         switch (code) {
@@ -186,7 +186,7 @@ const controlReducer = (state = initialState, action) => {
             winAudio.play();
             const newGamer = { name: state.gamerName, time: state.elapsedTime, bombs: state.mineCount }
             fetchData("POST", null, JSON.stringify(newGamer))
-              .catch((e) => console.log(e));
+              .catch((e) => console.log(e)); 
             draft.gameState = GAME.WIN;
             draft.enableTimer = false;
             draft.needToUpdateRecords = true
@@ -197,11 +197,11 @@ const controlReducer = (state = initialState, action) => {
       return produce(state, (draft) => {
         const code = state.boardData[action.y][action.x];
         if (!state.enableTimer) {
-          if (relaxAudio.paused) {
-            relaxAudio.volume = state.musicVolume / 100;
-            relaxAudio.play();
-          }
           draft.enableTimer = true;
+        }
+        if (relaxAudio.paused) {
+          relaxAudio.volume = state.musicVolume / 100;
+          relaxAudio.play();
         }
         let audio;
         if (code >= 0) {

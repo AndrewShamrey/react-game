@@ -1,7 +1,7 @@
 .back-setting-wrapper {
-  position: relative;
-  text-align: left;
+  position: relative; 
   padding-top: 30px;
+  text-align: left;
 }
 
 .back-setting-btn-close {

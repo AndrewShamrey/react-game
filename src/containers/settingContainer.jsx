@@ -1,23 +1,23 @@
 import { useState, useEffect, useCallback } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { useHotkeys } from 'react-hotkeys-hook';
 import { hideSettings, setGame, restartGame, showRecords, showBackSetting } from "../actions/control";
+import { MIN_WIDTH, MIN_HEIGHT, MIN_MINES, MAX_VOLUME } from '../utils/constants';
 import Settings from "../components/settings/settings";
 
 const SettingsContainer = () => {
   const dispatch = useDispatch();
   const enableSettings = useSelector((rootState) => rootState.control.enableSettings);
-  const stateWidth = useSelector((rootState) => rootState.control.width);
-  const stateHeight = useSelector((rootState) => rootState.control.height);
-  const stateMineCount = useSelector((rootState) => rootState.control.mineCount);
-  const stateSoundsVolume = useSelector((rootState) => rootState.control.soundsVolume);
-  const stateMusicVolume = useSelector((rootState) => rootState.control.musicVolume);
 
-  const [width, setWidth] = useState(stateWidth);
-  const [height, setHeight] = useState(stateHeight);
-  const [mineCount, setMineCount] = useState(stateMineCount);
-  const [soundsVolume, setSoundsVolume] = useState(stateSoundsVolume);
-  const [musicVolume, setMusicVolume] = useState(stateMusicVolume);
+  let prevState = JSON.parse(localStorage.getItem('currentGameConfig'));
+  if (!prevState) {
+    prevState = {}
+  }
+
+  const [width, setWidth] = useState(prevState.width || MIN_WIDTH);
+  const [height, setHeight] = useState(prevState.height || MIN_HEIGHT);
+  const [mineCount, setMineCount] = useState(prevState.mineCount || MIN_MINES);
+  const [soundsVolume, setSoundsVolume] = useState(prevState.soundsVolume || MAX_VOLUME / 2);
+  const [musicVolume, setMusicVolume] = useState(prevState.musicVolume || MAX_VOLUME / 2);
 
   useEffect(() => {
     const maxMineCount = (width - 1) * (height - 1);
@@ -63,10 +63,6 @@ const SettingsContainer = () => {
     dispatch(restartGame());
     dispatch(hideSettings());
   }, [width, height, mineCount, soundsVolume, musicVolume]);
-
-  // useHotkeys('Enter', () => {
-  //   onClickSet();
-  // });
 
   return (
     <>
