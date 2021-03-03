@@ -29,19 +29,16 @@ const StatusContainer = () => {
     };
   }, [enableTimer]);
 
-  const getResultEmoji = useCallback(
-    (gameState) => {
-      switch (gameState) {
-        case GAME.WIN:
-          return "😎";
-        case GAME.LOSE:
-          return "😢";
-        default:
-          return "😄";
-      }
-    },
-    [gameState]
-  );
+  const getResultEmoji = useCallback((gameState) => {
+    switch (gameState) {
+      case GAME.WIN:
+        return "😎";
+      case GAME.LOSE:
+        return "😢";
+      default:
+        return "😄";
+    }
+  }, [gameState]);
 
   const onClickRestart = useCallback(() => {
     dispatch(restartGame());

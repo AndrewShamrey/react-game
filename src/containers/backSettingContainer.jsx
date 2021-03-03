@@ -5,7 +5,6 @@ import BackSetting from "../components/backSetting/backSetting";
 
 const BackSettingContainer = () => {
   const dispatch = useDispatch();
-  const backIndex = useSelector((rootState) => rootState.control.backIndex);
   const enableBackSetting = useSelector((rootState) => rootState.control.enableBackSetting);
 
   const handleClickImage = useCallback((e) => {
@@ -21,7 +20,6 @@ const BackSettingContainer = () => {
     <>
       {enableBackSetting && (
         <BackSetting
-          backIndex={backIndex} 
           handleClickImage={handleClickImage}
           onClickClose={onClickClose}
         />

@@ -18,10 +18,10 @@ const BoardContainer = () => {
     if (width > 17 || height > 17) {
       setSize(20);
       setMargin(1);
-    } else if (width > 14 || height > 14) {
+    } else if (width > 13 || height > 13) {
       setSize(25);
       setMargin(1);
-    } else if (width > 12 || height > 12) {
+    } else if (width > 11 || height > 11) {
       setSize(35);
       setMargin(2);
     } else {

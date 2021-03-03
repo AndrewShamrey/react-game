@@ -87,10 +87,27 @@ const controlReducer = (state = initialState, action) => {
         systemAudio.volume = state.soundsVolume / 100;
         systemAudio.play();
         draft.enableSettings = true;
+        draft.enableTimer = false;
       });
     case ACTION_TYPES.HIDE_SETTINGS:
       return produce(state, (draft) => {
         draft.enableSettings = false;
+        draft.enableTimer = true;
+      });
+    case ACTION_TYPES.SET_PREV_STATE:
+      return produce(state, (draft) => {
+        draft.backIndex = action.prevState.backIndex;
+        draft.gamerName = action.prevState.gamerName;
+        draft.gameState = action.prevState.gameState;
+        draft.elapsedTime = action.prevState.elapsedTime;
+        draft.boardData = action.prevState.boardData;
+        draft.width = action.prevState.width;
+        draft.height = action.prevState.height;
+        draft.mineCount = action.prevState.mineCount;
+        draft.soundsVolume = action.prevState.soundsVolume;
+        draft.musicVolume = action.prevState.musicVolume;
+        draft.flagCount = action.prevState.flagCount;
+        draft.openedCellCount = action.prevState.openedCellCount;
       });
     case ACTION_TYPES.SET_GAME:
       return produce(state, (draft) => {
@@ -122,9 +139,10 @@ const controlReducer = (state = initialState, action) => {
         const code = state.boardData[action.y][action.x];
         draft.gameState = GAME.RUN;
         if (!state.enableTimer) {
-          if (relaxAudio.paused);
-          relaxAudio.volume = state.musicVolume / 100;
-          relaxAudio.play();
+          if (relaxAudio.paused) {
+            relaxAudio.volume = state.musicVolume / 100;
+            relaxAudio.play();
+          }
           draft.enableTimer = true;
         }
         let audio;
@@ -169,6 +187,13 @@ const controlReducer = (state = initialState, action) => {
     case ACTION_TYPES.ROTATE_CELL_STATE:
       return produce(state, (draft) => {
         const code = state.boardData[action.y][action.x];
+        if (!state.enableTimer) {
+          if (relaxAudio.paused) {
+            relaxAudio.volume = state.musicVolume / 100;
+            relaxAudio.play();
+          }
+          draft.enableTimer = true;
+        }
         let audio;
         if (code >= 0) {
           audio = new Audio(click);

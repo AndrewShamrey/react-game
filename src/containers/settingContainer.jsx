@@ -1,19 +1,23 @@
 import { useState, useEffect, useCallback } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useHotkeys } from 'react-hotkeys-hook';
-import { MIN_WIDTH, MIN_HEIGHT, MIN_MINES, MAX_VOLUME } from "../utils/constants";
 import { hideSettings, setGame, restartGame, showRecords, showBackSetting } from "../actions/control";
 import Settings from "../components/settings/settings";
 
 const SettingsContainer = () => {
   const dispatch = useDispatch();
   const enableSettings = useSelector((rootState) => rootState.control.enableSettings);
+  const stateWidth = useSelector((rootState) => rootState.control.width);
+  const stateHeight = useSelector((rootState) => rootState.control.height);
+  const stateMineCount = useSelector((rootState) => rootState.control.mineCount);
+  const stateSoundsVolume = useSelector((rootState) => rootState.control.soundsVolume);
+  const stateMusicVolume = useSelector((rootState) => rootState.control.musicVolume);
 
-  const [width, setWidth] = useState(MIN_WIDTH);
-  const [height, setHeight] = useState(MIN_HEIGHT);
-  const [mineCount, setMineCount] = useState(MIN_MINES);
-  const [soundsVolume, setSoundsVolume] = useState(MAX_VOLUME / 2);
-  const [musicVolume, setMusicVolume] = useState(MAX_VOLUME / 2);
+  const [width, setWidth] = useState(stateWidth);
+  const [height, setHeight] = useState(stateHeight);
+  const [mineCount, setMineCount] = useState(stateMineCount);
+  const [soundsVolume, setSoundsVolume] = useState(stateSoundsVolume);
+  const [musicVolume, setMusicVolume] = useState(stateMusicVolume);
 
   useEffect(() => {
     const maxMineCount = (width - 1) * (height - 1);
@@ -50,6 +54,10 @@ const SettingsContainer = () => {
     dispatch(showBackSetting());
   }, []);
 
+  const onClickClose = useCallback(() => {
+    dispatch(hideSettings());
+  }, []);
+
   const onClickSet = useCallback(() => {
     dispatch(setGame(width, height, mineCount, soundsVolume, musicVolume));
     dispatch(restartGame());
@@ -77,6 +85,7 @@ const SettingsContainer = () => {
           onChangeMusicVolume={onChangeMusicVolume}
           onClickRecords={onClickRecords}
           onClickSetBack={onClickSetBack}
+          onClickClose={onClickClose}
           onClickSet={onClickSet}
         />
       )}

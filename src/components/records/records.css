@@ -48,7 +48,7 @@
 .records-table {
   position: relative;
   width: 100%;
-  background: #24afff30;
+  background: #ffffff60;
   font-size: 14px;
   border-collapse: collapse;
   user-select: none;
@@ -59,7 +59,7 @@
   top: 0;
   min-width: 45px;
   padding: 2px 3px;
-  background: #0890ebe0;
+  background: #0890eb67;
   color: white;
   font-weight: 600;
   text-shadow: 1px 1px 2px #6d5bbe;

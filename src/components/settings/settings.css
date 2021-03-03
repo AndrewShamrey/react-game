@@ -1,6 +1,25 @@
 .settings-wrapper {
+  position: relative;
   margin-top: 30px;
   text-align: left;
+}
+
+.settings-btn-close {
+  position: absolute;
+  top: -15px;
+  right: 0;
+  height: 25px;
+  width: 25px;
+  cursor: pointer;
+  transition: all 0.2s ease;  
+}
+
+.settings-btn-close:hover {
+  transform: scale(1.2);
+}
+
+.settings-btn-close:active {
+  transform: scale(1.2) translateY(-1px);
 }
 
 .settings-wrapper__item {

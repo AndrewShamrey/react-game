@@ -6,6 +6,7 @@ import Auth from "../components/auth/auth";
 const AuthContainer = () => {
   const dispatch = useDispatch();
   const enableAuth = useSelector((rootState) => rootState.control.enableAuth);
+  const gamerName = useSelector((rootState) => rootState.control.gamerName);
 
   const [name, setInputName] = useState("");
 
@@ -13,12 +14,16 @@ const AuthContainer = () => {
     setInputName((e.target.value));
   }, []);
 
+  const onClickYes = useCallback((e) => {
+    dispatch(setName(gamerName));
+    dispatch(hideAuth());
+  }, [gamerName]);
+
   const onClickAuth = useCallback(() => {
     if (!name) {
       return;
     }
     dispatch(setName(name));
-    dispatch(restartGame());
     dispatch(hideAuth());
   }, [name]);
 
@@ -29,6 +34,8 @@ const AuthContainer = () => {
           name={name}
           onChangeName={onChangeName}
           onClickAuth={onClickAuth}
+          gamerName={gamerName}
+          onClickYes={onClickYes}
         />
       )}
     </>

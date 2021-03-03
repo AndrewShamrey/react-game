@@ -1,10 +1,12 @@
 import { MIN_WIDTH, MAX_WIDTH, MIN_HEIGHT, MAX_HEIGHT, MIN_MINES, MIN_VOLUME, MAX_VOLUME } from "../../utils/constants";
 import "./settings.css";
+import Close from "../../assets/images/close.svg";
 import Logo from "../../assets/images/rs_school_js.svg";
 
-const Settings = ({ width, height, mineCount, maxMineCount, soundsVolume, musicVolume, onChangeWidth, onChangeHeight, onChangeMines, onChangeSoundsVolume, onChangeMusicVolume, onClickRecords, onClickSetBack, onClickSet }) => {
+const Settings = ({ width, height, mineCount, maxMineCount, soundsVolume, musicVolume, onChangeWidth, onChangeHeight, onChangeMines, onChangeSoundsVolume, onChangeMusicVolume, onClickRecords, onClickSetBack, onClickClose, onClickSet }) => {
   return (
     <div className="settings-wrapper">
+      <img className="settings-btn-close" src={Close} alt="close" title="Cancel" onClick={onClickClose} />
       <div className="settings-wrapper__item">
         <p className="settings-item__title">Width: {width}</p>
         <input className="settings-input" type="range" min={MIN_WIDTH} max={MAX_WIDTH} value={width} onChange={onChangeWidth} />

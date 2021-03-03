@@ -1,4 +1,5 @@
 import { useRef, useCallback } from "react";
+import { useSelector } from "react-redux";
 
 import "./backSetting.css";
 import Close from "../../assets/images/close.svg";
@@ -8,7 +9,8 @@ import back3 from "../../assets/images/back3.jpg";
 import back4 from "../../assets/images/back4.jpg";
 import back5 from "../../assets/images/back5.png";
 
-const BackSetting = ({ backIndex, handleClickImage, onClickClose }) => {
+const BackSetting = ({ handleClickImage, onClickClose }) => {
+  const backIndex = useSelector((rootState) => rootState.control.backIndex);
   const backgrounds = [back1, back2, back3, back4, back5];
   const img1 = useRef(null);
   const img2 = useRef(null);
