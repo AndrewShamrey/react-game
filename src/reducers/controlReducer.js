@@ -38,6 +38,8 @@ const buildState = () => ({
   musicVolume: MAX_VOLUME / 2,
   flagCount: 0,
   openedCellCount: 0,
+  gameWin: false,
+  gameLose: false,
 });
 
 const initialState = { ...buildState() };
@@ -134,6 +136,11 @@ const controlReducer = (state = initialState, action) => {
       return produce(state, (draft) => {
         draft.elapsedTime++;
       });
+    case ACTION_TYPES.SET_RESULT_FALSE:
+      return produce(state, (draft) => {
+        draft.gameWin = false;
+        draft.gameLose = false;
+      });
     case ACTION_TYPES.OPEN_CELL:
       return produce(state, (draft) => {
         const code = state.boardData[action.y][action.x];
@@ -160,6 +167,7 @@ const controlReducer = (state = initialState, action) => {
         audio.play();
 
         if (code === CODES.MINE) {
+          draft.gameLose = true;
           relaxAudio.pause();
           const loseAudio = new Audio(failed);
           loseAudio.volume = state.soundsVolume / 100;
@@ -171,6 +179,7 @@ const controlReducer = (state = initialState, action) => {
           draft.boardData = expandResult.boardData;
           draft.openedCellCount += expandResult.openedCellCount;
           if (state.width * state.height - state.mineCount === draft.openedCellCount) {
+            draft.gameWin = true;
             relaxAudio.pause();
             const winAudio = new Audio(success);
             winAudio.volume = state.soundsVolume / 100;

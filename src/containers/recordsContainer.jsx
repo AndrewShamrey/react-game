@@ -28,12 +28,19 @@ const RecordsContainer = () => {
     dispatch(hideRecords());
   }, []);
 
+  const sortFunction = (a, b) => {
+    const firstItem = a.bombs / a.time;
+    const secondItem = b.bombs / b.time;
+    return secondItem - firstItem;
+  }
+
   return (
     <>
       {enableRecords && (
         <Records
           records={records} 
           onClickClose={onClickClose}
+          sortFunction={sortFunction}
         />
       )}
     </>
