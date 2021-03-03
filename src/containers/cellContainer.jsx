@@ -57,14 +57,14 @@ const CellContainer = ({ x, y }) => {
     if (gameState === GAME.READY || gameState === GAME.RUN) {
       dispatch(openCell(x, y));
     }
-  }, [gameState]);
+  }, [gameState, dispatch, x, y]);
 
   const onRightClickCell = useCallback((e) => {
     e.preventDefault();
     if (gameState === GAME.READY || gameState === GAME.RUN) {
       dispatch(rotateCellState(x, y));
     }
-  }, [gameState]);
+  }, [gameState, dispatch, x, y]);
 
   return (
     <Cell

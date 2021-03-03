@@ -22,11 +22,11 @@ const RecordsContainer = () => {
         })
         .catch((e) => console.log(e));
     }
-  }, [needToUpdateRecords]);
+  }, [needToUpdateRecords, dispatch, name]);
 
   const onClickClose = useCallback(() => {
     dispatch(hideRecords());
-  }, []);
+  }, [dispatch]);
 
   const sortFunction = (a, b) => {
     const firstItem = a.bombs / a.time;

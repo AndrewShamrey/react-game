@@ -1,4 +1,4 @@
-import { useRef, useCallback } from "react";
+import { useRef, useState, useCallback, useMemo } from "react";
 import { useSelector } from "react-redux";
 
 import "./backSetting.css";
@@ -18,7 +18,11 @@ const BackSetting = ({ handleClickImage, onClickClose }) => {
   const img4 = useRef(null);
   const img5 = useRef(null);  
 
-  const images = [img1, img2, img3, img4, img5];
+  const [images, setImages] = useState([]);
+
+  useMemo(() => {
+    setImages([img1, img2, img3, img4, img5]);
+  }, [img1, img2, img3, img4, img5]);
 
   const clickOnImage = useCallback((e) => {
     handleClickImage(e);
@@ -30,7 +34,7 @@ const BackSetting = ({ handleClickImage, onClickClose }) => {
         images[i].current.className = '';
       }
     }
-  }, []);
+  }, [handleClickImage, images]);
 
   return (
     <div className="back-setting-wrapper">

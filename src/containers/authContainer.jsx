@@ -17,7 +17,7 @@ const AuthContainer = () => {
   const onClickYes = useCallback((e) => {
     dispatch(setName(gamerName));
     dispatch(hideAuth());
-  }, [gamerName]);
+  }, [gamerName, dispatch]);
 
   const onClickAuth = useCallback(() => {
     if (!name) {
@@ -25,7 +25,7 @@ const AuthContainer = () => {
     }
     dispatch(setName(name));
     dispatch(hideAuth());
-  }, [name]);
+  }, [name, dispatch]);
 
   return (
     <>

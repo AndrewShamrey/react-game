@@ -10,11 +10,11 @@ const BackSettingContainer = () => {
   const handleClickImage = useCallback((e) => {
     const index = e.target.getAttribute('index');
     dispatch(selectBack(index));
-  }, []);
+  }, [dispatch]);
   
   const onClickClose = useCallback(() => {
     dispatch(hideBackSetting());
-  }, []);
+  }, [dispatch]);
 
   return (
     <>

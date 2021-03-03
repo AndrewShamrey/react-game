@@ -35,7 +35,11 @@ function App() {
   const handleLoad = useCallback(() => {
     const prevState = JSON.parse(localStorage.getItem('currentGameConfig'));
     dispatch(setPrevState(prevState));
-  }, []);
+  }, [dispatch]);
+
+  const handleEndImage = useCallback(() => {
+    dispatch(setResultFalse());
+  }, [dispatch]);
 
   useEffect(() => {
     if (gameWin || gameLose) {
@@ -47,11 +51,7 @@ function App() {
       window.removeEventListener('load', handleLoad);
       window.removeEventListener('unload', handleUnload);
     };
-  }, [handleLoad, handleUnload, gameWin, gameLose]);
-
-  const handleEndImage = useCallback(() => {
-    dispatch(setResultFalse());
-  }, []);
+  }, [handleLoad, handleUnload, gameWin, gameLose, handleEndImage]);
 
   return (
     <div className="App" style={style}>

@@ -26,7 +26,7 @@ const StatusContainer = () => {
     return () => {
       clearInterval(gameTimer);
     };
-  }, [enableTimer]);
+  }, [enableTimer, dispatch]);
 
   const getResultEmoji = useCallback((gameState) => {
     switch (gameState) {
@@ -37,15 +37,15 @@ const StatusContainer = () => {
       default:
         return "😄";
     }
-  }, [gameState]);
+  }, []);
 
   const onClickRestart = useCallback(() => {
     dispatch(restartGame());
-  }, []);
+  }, [dispatch]);
 
   const onClickSettings = useCallback(() => {
     dispatch(showSettings());
-  }, []);
+  }, [dispatch]);
 
   return (
     <>

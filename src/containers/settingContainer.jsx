@@ -48,21 +48,21 @@ const SettingsContainer = () => {
 
   const onClickRecords = useCallback(() => {
     dispatch(showRecords());
-  }, []);
+  }, [dispatch]);
 
   const onClickSetBack = useCallback(() => {
     dispatch(showBackSetting());
-  }, []);
+  }, [dispatch]);
 
   const onClickClose = useCallback(() => {
     dispatch(hideSettings());
-  }, []);
+  }, [dispatch]);
 
   const onClickSet = useCallback(() => {
     dispatch(setGame(width, height, mineCount, soundsVolume, musicVolume));
     dispatch(restartGame());
     dispatch(hideSettings());
-  }, [width, height, mineCount, soundsVolume, musicVolume]);
+  }, [width, height, mineCount, soundsVolume, musicVolume, dispatch]);
 
   return (
     <>
