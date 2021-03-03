@@ -2,7 +2,7 @@ import { useState, useEffect, useCallback } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useHotkeys } from 'react-hotkeys-hook';
 import { MIN_WIDTH, MIN_HEIGHT, MIN_MINES, MAX_VOLUME } from "../utils/constants";
-import { hideSettings, setGame, restartGame, showRecords } from "../actions/control";
+import { hideSettings, setGame, restartGame, showRecords, showBackSetting } from "../actions/control";
 import Settings from "../components/settings/settings";
 
 const SettingsContainer = () => {
@@ -46,6 +46,10 @@ const SettingsContainer = () => {
     dispatch(showRecords());
   }, []);
 
+  const onClickSetBack = useCallback(() => {
+    dispatch(showBackSetting());
+  }, []);
+
   const onClickSet = useCallback(() => {
     dispatch(setGame(width, height, mineCount, soundsVolume, musicVolume));
     dispatch(restartGame());
@@ -72,6 +76,7 @@ const SettingsContainer = () => {
           onChangeSoundsVolume={onChangeSoundsVolume}
           onChangeMusicVolume={onChangeMusicVolume}
           onClickRecords={onClickRecords}
+          onClickSetBack={onClickSetBack}
           onClickSet={onClickSet}
         />
       )}

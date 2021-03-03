@@ -10,3 +10,6 @@ export const SET_NAME = "SET_NAME";
 export const SHOW_RECORDS = "SHOW_RECORDS";
 export const HIDE_RECORDS = "HIDE_RECORDS";
 export const UPDATE_RECORDS = "UPDATE_RECORDS";
+export const SELECT_BACK= "SELECT_BACK";
+export const SHOW_BACK_SETTING="SHOW_BACK_SETTING";
+export const HIDE_BACK_SETTING="HIDE_BACK_SETTING";

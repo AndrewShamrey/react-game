@@ -24,7 +24,9 @@ const buildState = () => ({
   gamerName: "",
   enableRecords: false,
   enableSettings: false,
+  enableBackSetting: false,
   needToUpdateRecords: false,
+  backIndex: 1,
   gameState: GAME.READY,
   enableTimer: false,
   elapsedTime: 0,
@@ -64,6 +66,20 @@ const controlReducer = (state = initialState, action) => {
     case ACTION_TYPES.UPDATE_RECORDS:
       return produce(state, (draft) => {
         draft.needToUpdateRecords = false;
+      });
+    case ACTION_TYPES.SELECT_BACK:
+      return produce(state, (draft) => {
+        draft.backIndex = action.index;
+      });
+    case ACTION_TYPES.SHOW_BACK_SETTING:
+      return produce(state, (draft) => {
+        draft.enableBackSetting = true;
+        draft.enableSettings = false;
+      });
+    case ACTION_TYPES.HIDE_BACK_SETTING:
+      return produce(state, (draft) => {
+        draft.enableBackSetting = false;
+        draft.enableSettings = true;
       });
     case ACTION_TYPES.SHOW_SETTINGS:
       return produce(state, (draft) => {

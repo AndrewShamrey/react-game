@@ -10,6 +10,7 @@ const StatusContainer = () => {
   const enableAuth = useSelector((rootState) => rootState.control.enableAuth);
   const enableSettings = useSelector((rootState) => rootState.control.enableSettings);
   const enableRecords = useSelector((rootState) => rootState.control.enableRecords);
+  const enableBackSetting = useSelector((rootState) => rootState.control.enableBackSetting);
   const gameState = useSelector((rootState) => rootState.control.gameState);
   const enableTimer = useSelector((rootState) => rootState.control.enableTimer);
   const elapsedTime = useSelector((rootState) => rootState.control.elapsedTime);
@@ -56,7 +57,7 @@ const StatusContainer = () => {
 
   return (
     <>
-      {!enableSettings && !enableAuth && !enableRecords && (
+      {!enableSettings && !enableAuth && !enableRecords && !enableBackSetting && (
         <Status
           leftMineCount={mineCount - flagCount}
           mineCount={mineCount}

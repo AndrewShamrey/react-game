@@ -7,6 +7,7 @@ const BoardContainer = () => {
   const enableAuth = useSelector((rootState) => rootState.control.enableAuth);
   const enableSettings = useSelector((rootState) => rootState.control.enableSettings);
   const enableRecords = useSelector((rootState) => rootState.control.enableRecords);
+  const enableBackSetting = useSelector((rootState) => rootState.control.enableBackSetting);
   const width = useSelector((rootState) => rootState.control.width);
   const height = useSelector((rootState) => rootState.control.height);
 
@@ -35,7 +36,7 @@ const BoardContainer = () => {
 
   return (
     <>
-      {!enableSettings && !enableAuth && !enableRecords && (
+      {!enableSettings && !enableAuth && !enableRecords && !enableBackSetting && (
         <Board
           cellSize={cellSize}
           cellMargin={cellMargin}

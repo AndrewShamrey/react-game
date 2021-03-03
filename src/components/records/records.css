@@ -15,11 +15,11 @@
 }
 
 .records-btn-close:hover {
-    transform: scale(1.2);
+  transform: scale(1.2);
 }
 
 .records-btn-close:active {
-    transform: scale(1.2) translateY(-1px);
+  transform: scale(1.2) translateY(-1px);
 }
 
 .records-title {
