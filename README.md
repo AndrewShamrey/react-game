@@ -4,7 +4,7 @@
 
 Play: https://andrewshamrey-react-game.netlify.app
 
-### Еo start the game on a local server, download this branch and follow the instructions below.
+### To start the game on a local server, download the 'react-game' branch and follow the instructions below.
 
 ## NPM commands
 
