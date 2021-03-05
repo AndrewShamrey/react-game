@@ -1,0 +1,17 @@
+export const SHOW_SETTINGS = "SHOW_SETTINGS";
+export const HIDE_SETTINGS = "HIDE_SETTINGS";
+export const SET_GAME = "SET_GAME";
+export const RESTART_GAME = "RESTART_GAME";
+export const UPDATE_ELAPSED_TIME = "UPDATE_ELAPSED_TIME";
+export const OPEN_CELL = "OPEN_CELL";
+export const ROTATE_CELL_STATE = "ROTATE_CELL_STATE";
+export const HIDE_AUTH = "HIDE_AUTH";
+export const SET_NAME = "SET_NAME";
+export const SHOW_RECORDS = "SHOW_RECORDS";
+export const HIDE_RECORDS = "HIDE_RECORDS";
+export const UPDATE_RECORDS = "UPDATE_RECORDS";
+export const SELECT_BACK= "SELECT_BACK";
+export const SHOW_BACK_SETTING="SHOW_BACK_SETTING";
+export const HIDE_BACK_SETTING="HIDE_BACK_SETTING";
+export const SET_PREV_STATE="SET_PREV_STATE";
+export const SET_RESULT_FALSE="SET_RESULT_FALSE";
